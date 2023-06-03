@@ -5,8 +5,8 @@ var message = document.getElementById("message");
 var jumping = 0;
 var counter = 0;
 
-var score = document.createTextNode("Flappy Bird");
-message.appendChild(score);
+var title = document.createTextNode("Flappy Bird");
+message.appendChild(title);
 
 // Randomly positions the hole for each block
 hole.addEventListener("animationiteration", () => {
@@ -38,7 +38,7 @@ setInterval(() => {
     restart.setAttribute("id", "restart")
     restart.textContent = 'Restart';
 
-    message.removeChild(score);
+    message.removeChild(title);
     message.appendChild(gameOver);
     message.appendChild(restart);
 
