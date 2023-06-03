@@ -25,6 +25,7 @@ setInterval(() => {
   var holeTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
   var cTop = -(500 - characterTop);
 
+  // Collision
   if((characterTop > 480) || ((blockLeft < 20) && (blockLeft > -50) && ((cTop < holeTop) || (cTop > holeTop + 130)))) {
     character.style.display = 'none';
     character.style.top = 100 + "px";
