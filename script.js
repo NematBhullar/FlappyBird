@@ -1,8 +1,12 @@
 var block = document.getElementById("block");
 var hole = document.getElementById("hole");
 var character = document.getElementById("character");
+var message = document.getElementById("message");
 var jumping = 0;
 var counter = 0;
+
+var score = document.createTextNode("Flappy Bird");
+message.appendChild(score);
 
 // Randomly positions the hole for each block
 hole.addEventListener("animationiteration", () => {
@@ -22,11 +26,26 @@ setInterval(() => {
   var cTop = -(500 - characterTop);
 
   if((characterTop > 480) || ((blockLeft < 20) && (blockLeft > -50) && ((cTop < holeTop) || (cTop > holeTop + 130)))) {
-    // var gameOver = document.getElementById("game-over").style.display = block;
-    alert("Game Over. Final Score: "+(() => {counter < 0 ? 0 : counter - 1}));
+    character.style.display = 'none';
     character.style.top = 100 + "px";
+  
+    counter <= 0 ? counter = 0 : counter;
+    var gameOver = document.createTextNode("Game Over. Final Score: " + counter);
     counter=0;
-}
+  
+    var restart = document.createElement("button");
+    restart.setAttribute("id", "restart")
+    restart.textContent = 'Restart';
+
+    message.removeChild(score);
+    message.appendChild(gameOver);
+    message.appendChild(restart);
+
+
+    restart.addEventListener("click", () => {
+      location.reload();
+    })
+  }
 
 }, 10);
 
